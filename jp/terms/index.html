@@ -2,10 +2,23 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>アプリ利用規約</title>
   <style>
       body { font-family: sans-serif; padding: 16px; line-height: 1.6; font-size: 14px; color: #333; }
       h1 { font-size: 20px; color: #333; }
+      /* PC向けの基本スタイル */
+      .container {
+          width: 1000px;
+          background-color: lightblue;
+      }
+      /* 画面幅が768px以下（スマホ・タブレット）の場合のスタイル */
+      @media screen and (max-width: 768px) {
+          .container {
+              width: 100%;
+              background-color: lightgreen;
+          }
+      }
   </style>
 </head>
 <body>
