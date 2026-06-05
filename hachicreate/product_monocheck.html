@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MonoCheck – あなたの日用品管理パートナー</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Noto Sans JP', sans-serif; color: #333333; background-color: #f7fcfc; line-height: 1.8; }
+        h1, h2, h3 { font-family: 'Kiwi Maru', serif; color: #2c3e50; }
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+        img { max-width: 100%; height: auto; display: block; }
+        /* バッジ用スタイル */
+        .badge-link { display: inline-block; transition: opacity 0.2s; }
+        .badge-link:hover { opacity: 0.8; }
+        .badge-link img { width: 240px; }
+
+        .hero { background: linear-gradient(135deg, #e0f7fa 0%, #f7fcfc 100%); padding: 80px 0; position: relative; overflow: hidden; }
+        .hero-flex { display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+        @media (max-width: 768px) { .hero-flex { flex-direction: column; text-align: center; } }
+        .hero-content { flex: 1; }
+        .hero-badge { display: inline-block; background-color: #81ecec; color: #008080; font-size: 0.9rem; font-weight: bold; padding: 4px 12px; border-radius: 4px; margin-bottom: 20px; }
+        .hero h1 { font-size: 2.4rem; line-height: 1.4; margin-bottom: 20px; }
+        .hero-sub { font-size: 1.1rem; color: #555555; margin-bottom: 35px; }
+        .hero-image { flex: 1; display: flex; justify-content: center; }
+        .mockup-placeholder { width: 280px; height: 598px; background-color: #ffffff; border: 12px solid #2d3436; border-radius: 36px; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: center; color: #888; font-weight: bold; text-align: center; padding: 0px; }
+        .problems { padding: 80px 0; background-color: #ffffff; }
+        .section-title { text-align: center; font-size: 2rem; margin-bottom: 50px; position: relative; padding-bottom: 15px; }
+        .section-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 4px; background-color: #00b894; border-radius: 2px; }
+        .problems-box { background-color: #f8fdfc; border: 2px dashed #b2bec3; border-radius: 16px; padding: 40px; max-width: 700px; margin: 0 auto; }
+        .problems-list { list-style: none; }
+        .problems-list li { position: relative; padding-left: 35px; margin-bottom: 20px; font-size: 1.1rem; font-weight: 500; }
+        .problems-list li::before { content: "！"; position: absolute; left: 0; top: -2px; background-color: #ff7675; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem; }
+        .concept { padding: 80px 0; background-color: #e8f8f5; text-align: center; }
+        .concept-text { max-width: 800px; margin: 0 auto; font-size: 1.2rem; color: #444; }
+        .features { padding: 80px 0; background-color: #ffffff; }
+        .feature-item { display: flex; align-items: center; gap: 60px; margin-bottom: 80px; }
+        .feature-item:last-child { margin-bottom: 0; }
+        @media (max-width: 768px) { .feature-item { flex-direction: column; gap: 30px; text-align: center; } }
+        .feature-content { text-align: center; flex: 1; }
+        .feature-num { font-family: 'Kiwi Maru', serif; font-size: 1.5rem; color: #0984e3; font-weight: bold; margin-bottom: 10px; display: block; }
+        .feature-content h3 { font-size: 1.6rem; margin-bottom: 20px; }
+        .feature-image { flex: 1; display: flex; justify-content: center; }
+        .img-placeholder { width: 100%; max-width: 360px; height: 240px; background-color: #f1f2f6; border-radius: 12px; border: 1px solid #dfe4ea; display: flex; align-items: center; justify-content: center; color: #747d8c; text-align: center; padding: 10px; }
+        .closing { padding: 100px 0; background: linear-gradient(135deg, #f7fcfc 0%, #e0f7fa 100%); text-align: center; }
+        .closing h2 { font-size: 2rem; margin-bottom: 20px; }
+        .closing-text { font-size: 1.2rem; margin-bottom: 40px; color: #555; }
+        footer { background-color: #2d3436; color: #ffffff; padding: 30px 0; text-align: center; font-size: 0.9rem; }
+        footer a { color: #ffde59; text-decoration: none; margin: 0 10px; }
+        footer a:hover { text-decoration: underline; }
+        .footer-links { margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="container hero-flex">
+            <div class="hero-content">
+                <span class="hero-badge">日用品・ストック管理アプリ</span>
+                <h1>「あ、買い忘れた！」を<br>もう終わりにしよう。</h1>
+                <p class="hero-sub">MonoCheck（モノチェック）は、日用品の使用状況やストック数をサクッと記録し、買い時を分かりやすく管理できるあなたの心強いパートナーです。</p>
+                <a href="https://play.google.com/store/apps/details?id=com.adiisolutions.monocheck&hl=jp" class="badge-link" target="_blank">
+                    <img alt="Google Play で手に入れよう" src="img/en_badge_web_generic.png">
+                </a>
+            </div>
+            <div class="hero-image">
+                <div class="mockup-placeholder">
+                    <img src="img/monocheck.png" alt="MonoCheck ホーム画面">
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="problems">
+        <div class="container">
+            <h2 class="section-title">こんな「しまった！」はありませんか？</h2>
+            <div class="problems-box">
+                <ul class="problems-list">
+                    <li>お風呂に入ってから、シャンプーの詰め替えがないことに気づいた</li>
+                    <li>スーパーで安いと思って買ったら、家にまだストックが山ほどあった</li>
+                    <li>どのくらいの頻度で日用品を消費しているのか把握できていない</li>
+                    <li>家族で「あれ買った？」と毎回確認するのが少し面倒</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="concept">
+        <div class="container">
+            <h2 class="section-title">買い物の「ムダ」と「ストレス」をゼロに。</h2>
+            <p class="concept-text">MonoCheckは、シンプルに「何が、あとどれくらいあるか」を見える化します。<br>使い切るタイミングをアプリが教えてくれるから、もうドラッグストアの棚の前で悩む必要はありません。</p>
+        </div>
+    </section>
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">MonoCheckの便利な4つの機能</h2>
+            <div class="feature-item">
+                <div class="feature-content">
+                    <span class="feature-num">Feature 01</span>
+                    <h3>ストック残量をひと目で把握</h3>
+                    <p>今家にある日用品の数をリスト化。アイテムごとに残量が視覚的にわかるので、「あとどれくらい残っているか」が一目瞭然です。</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-content">
+                    <span class="feature-num">Feature 02</span>
+                    <h3>ベストな「買い時」がわかる</h3>
+                    <p>ストックが減ってきたら、「そろそろ買い時です」とアラートでお知らせ。買い忘れを未然に防ぎ、必要な分だけを無駄なく購入できます。</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-content">
+                    <span class="feature-num">Feature 03</span>
+                    <h3>カテゴリ分けでスッキリ整理</h3>
+                    <p>「キッチン」「バスルーム」「掃除用品」など、カテゴリごとに分けてアイテムを管理。直感的で優しいUIで、登録も確認も迷わずスムーズに行えます。</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-content">
+                    <span class="feature-num">Feature 04</span>
+                    <h3>使用状況を記録してペースを把握</h3>
+                    <p>開封した日や使い切った日を記録。自分の消費ペースがわかるので、無駄なまとめ買いを防ぎ、節約やミニマルな暮らしにも役立ちます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="closing">
+        <div class="container">
+            <h2>スッキリ整った、心地よい暮らしへ。</h2>
+            <p class="closing-text">MonoCheckで、日用品管理のちょっとしたストレスから解放されましょう。</p>
+            <a href="https://play.google.com/store/apps/details?id=com.adiisolutions.monocheck&hl=jp" class="badge-link" target="_blank">
+                <img alt="Google Play で手に入れよう" src="img/en_badge_web_generic.png">
+            </a>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="https://adiisolutions.com/hachicreate/">アプリ公式サイト</a> | 
+                <a href="https://play.google.com/store/apps/developer?id=hachicreate&hl=jp" target="_blank">Google Play ストア</a>
+            </div>
+            <p>&copy; 2026 hachicreate</p>
+        </div>
+    </footer>
+</body>
+</html>
