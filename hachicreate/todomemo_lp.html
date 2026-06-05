@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDoメモ – やること整理＆振り返り</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Noto Sans JP', sans-serif; color: #4a4a4a; background-color: #fcfaf7; line-height: 1.8; }
+        h1, h2, h3 { font-family: 'Kiwi Maru', serif; color: #333333; }
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+        img { max-width: 100%; height: auto; display: block; }
+        /* バッジ用スタイル */
+        .badge-link { display: inline-block; transition: opacity 0.2s; }
+        .badge-link:hover { opacity: 0.8; }
+        .badge-link img { width: 240px; }
+        
+        .hero { background: linear-gradient(135deg, #fff9e6 0%, #fcfaf7 100%); padding: 80px 0; position: relative; overflow: hidden; }
+        .hero-flex { display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+        @media (max-width: 768px) { .hero-flex { flex-direction: column; text-align: center; } }
+        .hero-content { flex: 1; }
+        .hero-badge { display: inline-block; background-color: #ffe66d; color: #555557; font-size: 0.9rem; font-weight: bold; padding: 4px 12px; border-radius: 4px; margin-bottom: 20px; }
+        .hero h1 { font-size: 2.5rem; line-height: 1.3; margin-bottom: 20px; white-space: nowrap; }
+        .hero-sub { font-size: 1.1rem; color: #666666; margin-bottom: 35px; }
+        .hero-image { flex: 1; display: flex; justify-content: center; }
+        .mockup-placeholder { width: 280px; height: 598px; background-color: #ffffff; border: 12px solid #2d3436; border-radius: 36px; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: center; color: #888; font-weight: bold; text-align: center; padding: 0px; }
+        .problems { padding: 80px 0; background-color: #ffffff; }
+        .section-title { text-align: center; font-size: 2rem; margin-bottom: 50px; position: relative; padding-bottom: 15px; }
+        .section-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 4px; background-color: #ffe66d; border-radius: 2px; }
+        .problems-box { background-color: #fdfbf7; border: 2px dashed #eedcc5; border-radius: 16px; padding: 40px; max-width: 700px; margin: 0 auto; }
+        .problems-list { list-style: none; }
+        .problems-list li { position: relative; padding-left: 35px; margin-bottom: 20px; font-size: 1.1rem; font-weight: 500; }
+        .problems-list li::before { content: "✓"; position: absolute; left: 5px; color: #ff6b6b; font-weight: bold; font-size: 1.3rem; }
+        .concept { padding: 80px 0; background-color: #fffdf9; text-align: center; }
+        .concept-text { max-width: 800px; margin: 0 auto; font-size: 1.2rem; color: #555; }
+        .features { padding: 80px 0; background-color: #ffffff; }
+        .feature-item { display: flex; align-items: center; gap: 60px; margin-bottom: 80px; }
+        .feature-item:last-child { margin-bottom: 0; }
+        @media (max-width: 768px) { .feature-item { flex-direction: column; gap: 30px; text-align: center; } }
+        .feature-content { text-align: center; flex: 1; }
+        .feature-num { font-family: 'Kiwi Maru', serif; font-size: 1.5rem; color: #ff9f43; font-weight: bold; margin-bottom: 10px; display: block; }
+        .feature-content h3 { font-size: 1.6rem; margin-bottom: 20px; }
+        .feature-image { flex: 1; display: flex; justify-content: center; }
+        .img-placeholder { width: 100%; max-width: 360px; height: 240px; background-color: #f0f0f0; border-radius: 12px; border: 1px solid #e0e0e0; display: flex; align-items: center; justify-content: center; color: #888; }
+        .closing { padding: 100px 0; background: linear-gradient(135deg, #fcfaf7 0%, #fff9e6 100%); text-align: center; }
+        .closing h2 { font-size: 2rem; margin-bottom: 20px; }
+        .closing-text { font-size: 1.2rem; margin-bottom: 40px; color: #555; }
+        footer { background-color: #333333; color: #ffffff; padding: 30px 0; text-align: center; font-size: 0.9rem; }
+        footer a { color: #ffde59; text-decoration: none; margin: 0 10px; }
+        footer a:hover { text-decoration: underline; }
+        .footer-links { margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="container hero-flex">
+            <div class="hero-content">
+                <span class="hero-badge">シンプルタスク管理</span>
+                <h1>思いついたら、サッと書く。<br>まるで「紙の付箋」のような<br>新感覚ToDoアプリ。</h1>
+                <p class="hero-sub">複雑な設定は一切なし。手書き風フォントとシンプルな操作で、あなたの頭の中をスッキリ整理します。</p>
+                <a href="https://play.google.com/store/apps/details?id=com.adiisolutions.todomemo&hl=jp" class="badge-link" target="_blank">
+                    <img alt="Google Play で手に入れよう" src="img/en_badge_web_generic.png">
+                </a>
+            </div>
+            <div class="hero-image">
+                <div class="mockup-placeholder">
+                    <img src="img/todomemo.png" alt="ToDoメモ ホーム画面">
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="problems">
+        <div class="container">
+            <h2 class="section-title">こんなお悩み・要望はありませんか？</h2>
+            <div class="problems-box">
+                <ul class="problems-list">
+                    <li>いつも付箋やノートにやることを手書きしている</li>
+                    <li>通知や期限設定などの複雑な機能は使いこなせない</li>
+                    <li>今やるべきことを「パッ」と一目で直感的に把握したい</li>
+                    <li>自分のやったこと（履歴）を振り返って達成感を得たい</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="concept">
+        <div class="container">
+            <h2 class="section-title">シンプルだから、続く。</h2>
+            <p class="concept-text">
+                「ToDoメモ」は、手軽さと使いやすさに徹底的にこだわって開発しました。<br>
+                思いついたその瞬間に1タップで入力。ノートにペンで書き込むような温かみのあるデザインで、毎日のタスク管理が少しだけ楽しくなります。
+            </p>
+        </div>
+    </section>
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">毎日をスッキリさせる4つの特徴</h2>
+            <div class="feature-item">
+                <div class="feature-content">
+                    <span class="feature-num">Feature 01</span>
+                    <h3>1タップでサッと入力 ＆ 手書き風フォント</h3>
+                    <p>忘れる前に素早くメモ。ノートに手書きしているような親しみやすいフォントを採用し、アプリならではの便利さと、手書きの温かみを両立しました。</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-content">
+                    <span class="feature-num">Feature 02</span>
+                    <h3>色分け＆ドラッグで自由自在に整理</h3>
+                    <p>やることを色分けして分類したり、ドラッグ＆ドロップで優先順位をサッと入れ替え。直感的な整理で、頭の中のモヤモヤもスッキリ晴れます。</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-content">
+                    <span class="feature-num">Feature 03</span>
+                    <h3>スワイプで完了！流れるような操作感</h3>
+                    <p>タスクが終わったら「右スワイプ」でサクッと完了！やめた場合は「左スワイプ」でキャンセル。思考を止めないクイックな操作で、作業のリズムを崩しません。</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-content">
+                    <span class="feature-num">Feature 04</span>
+                    <h3>履歴から「日々の行動」を振り返り</h3>
+                    <p>完了・キャンセルしたToDoはいつでも履歴から確認可能。キャンセルの理由も記録できるので、後から自分の行動パターンを振り返るのにも役立ちます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="closing">
+        <div class="container">
+            <h2>「書く」ことで、毎日はもっと軽くなる。</h2>
+            <p class="closing-text">あなたの頭の中のモヤモヤを、付箋のようにサッと整理してみませんか？</p>
+            <a href="https://play.google.com/store/apps/details?id=com.adiisolutions.todomemo&hl=jp" class="badge-link" target="_blank">
+                <img alt="Google Play で手に入れよう" src="img/en_badge_web_generic.png">
+            </a>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="https://adiisolutions.com/hachicreate/">アプリ公式サイト</a> | 
+                <a href="https://play.google.com/store/apps/developer?id=hachicreate&hl=jp" target="_blank">Google Play ストア</a>
+            </div>
+            <p>&copy; 2026 hachicreate</p>
+        </div>
+    </footer>
+</body>
+</html>
